@@ -3,11 +3,10 @@
   const displayHist = document.querySelector('.history');
   const displayNb = document.querySelector('.result');
 
-  let stringNb, history, prevNb, activeNb, storedNb, storedOp, result;
+  let stringNb, prevNb, activeNb, storedNb, storedOp, result;
 
   function init() {
     stringNb = "";
-    history = "";
     prevNb = "";
     activeNb = 0;
     storedNb = 0;
@@ -33,13 +32,13 @@
         storedNb = activeNb;
         storedOp = e.target.innerHTML;
         displayNb.innerHTML = storedNb;
-        displayHist.innerHTML += stringNb + " " + storedOp + " ";
+        displayHist.innerHTML += `${stringNb} ${storedOp} `;
         stringNb = "";
       } else if (e.target.className === "btn equal-btn"){
         equation(storedOp, storedNb, activeNb);
-        displayNb.innerHTML = result;
         activeNb = result;
         storedNb = result;
+        displayNb.innerHTML = activeNb;
         displayHist.innerHTML = "";
         storedOp = "";
         stringNb = storedNb;
@@ -50,14 +49,16 @@
         displayNb.innerHTML = activeNb;
         stringNb = "";
       } else if (e.target.innerHTML === "+/-") {
-        if (stringNb.charAt(0) !== "-") {
-          stringNb = "-" + stringNb;
-          displayNb.innerHTML = stringNb;
-          activeNb = parseFloat(stringNb);
-        } else {
-          stringNb = stringNb.slice(1);
-          displayNb.innerHTML = stringNb;
-          activeNb = parseFloat(stringNb);
+        if (activeNb !== 0) {
+          if (Math.sign(activeNb) === 1) {
+            stringNb = "-" + stringNb;
+            displayNb.innerHTML = stringNb;
+            activeNb = parseFloat(stringNb);
+          } else {
+            stringNb = stringNb.slice(1);
+            displayNb.innerHTML = stringNb;
+            activeNb = parseFloat(stringNb);
+          };
         };
       } else if (e.target.innerHTML === ".") {
         stringNb = displayNb.innerHTML;
