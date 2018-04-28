@@ -1,0 +1,1 @@
+This is a simple basic calculator, a little personal challenge I gave myself. I tried to reduce the code as much as I can. I also avoided using the eval() method, which is cheating :P
