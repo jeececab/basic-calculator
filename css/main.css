@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center; }
+
+button:focus {
+  outline: 0; }
+
+.calculator {
+  background: #222;
+  padding: 1em;
+  border-radius: 13px; }
+
+.screen {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: right;
+  width: 100%;
+  margin: 1.5em auto;
+  padding: 0.8em;
+  background: lightgrey; }
+
+.history {
+  font-size: 1.2rem;
+  color: #555;
+  height: 1.2em; }
+
+.numpad {
+  height: auto;
+  width: auto;
+  padding: 1em;
+  border: solid 2px lightgray;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em; }
+
+.btn {
+  width: 3em;
+  height: 3em;
+  border: 0px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer; }
+
+.c-btn, .ce-btn {
+  background: #f76f4f; }
+  .c-btn:hover, .ce-btn:hover {
+    background: #d6310a; }
+
+.number-btn, .sec-op-btn {
+  background: lightgrey; }
+  .number-btn:hover, .sec-op-btn:hover {
+    background: #a0a0a0; }
+
+.equal-btn {
+  background: lightgreen; }
+  .equal-btn:hover {
+    background: #38e038; }
+
+.operator-btn {
+  background: orange; }
+  .operator-btn:hover {
+    background: #996300; }
+
+/*# sourceMappingURL=main.css.map */
