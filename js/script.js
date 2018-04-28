@@ -41,7 +41,7 @@
         displayNb.innerHTML = activeNb;
         displayHist.innerHTML = "";
         storedOp = "";
-        stringNb = storedNb;
+        stringNb = activeNb;
       } else if (e.target.innerHTML === "C") {
         init();
       } else if (e.target.innerHTML === "CE") {
@@ -51,13 +51,13 @@
       } else if (e.target.innerHTML === "+/-") {
         if (activeNb !== 0) {
           if (Math.sign(activeNb) === 1) {
-            stringNb = "-" + stringNb;
-            displayNb.innerHTML = stringNb;
-            activeNb = parseFloat(stringNb);
+            activeNb = -activeNb;
+            displayNb.innerHTML = activeNb;
+            stringNb = activeNb;
           } else {
-            stringNb = stringNb.slice(1);
-            displayNb.innerHTML = stringNb;
-            activeNb = parseFloat(stringNb);
+            activeNb = Math.abs(activeNb);
+            displayNb.innerHTML = activeNb;
+            stringNb = activeNb;
           };
         };
       } else if (e.target.innerHTML === ".") {
