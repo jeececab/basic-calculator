@@ -25,7 +25,7 @@ button:focus {
   font-size: 1.5rem;
   line-height: 1.2;
   text-align: right;
-  width: 100%;
+  width: 11.8em;
   margin: 1.5em auto;
   padding: 0.8em;
   background: lightgrey;
@@ -35,6 +35,11 @@ button:focus {
   font-size: 1.2rem;
   color: #555;
   height: 1.2em;
+  white-space: nowrap;
+  direction: rtl;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .numpad {

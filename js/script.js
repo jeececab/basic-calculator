@@ -1,18 +1,17 @@
-(() => {
+// (() => {
   const buttons = document.querySelectorAll('.btn');
   const displayHist = document.querySelector('.history');
   const displayNb = document.querySelector('.result');
 
-  let stringNb, prevNb, activeNb, storedNb, storedOp, result;
+  let stringNb, activeNb, storedNb, storedOp, result;
 
   function init() {
-    stringNb = "";
-    prevNb = "";
     activeNb = 0;
     storedNb = 0;
     storedOp = "";
     result = 0;
-    displayHist.innerHTML = " ";
+    stringNb = activeNb;
+    displayHist.innerHTML = "";
     displayNb.innerHTML = activeNb;
   };
 
@@ -21,29 +20,37 @@
   Array.from(buttons).forEach(el => {
     el.addEventListener('click', e => {
       if (e.target.className === "btn number-btn") {
+        if (stringNb === 0) {
+          stringNb = "";
+        };
         if (stringNb.length < 20) {
           stringNb += e.target.innerHTML;
           displayNb.innerHTML = stringNb;
           activeNb = parseFloat(stringNb);
         };
+
       } else if (e.target.className === "btn operator-btn") {
         if (storedOp !== "") {
           equation(storedOp, storedNb, activeNb);
           activeNb = result;
         };
+        if (stringNb === "") {
+          stringNb = storedNb;
+        };
         storedNb = activeNb;
         storedOp = e.target.innerHTML;
         displayNb.innerHTML = storedNb;
-        displayHist.innerHTML += `${stringNb} ${storedOp} `;
+        displayHist.innerHTML = `${storedOp} ${stringNb} ` + displayHist.innerHTML;
         stringNb = "";
-      } else if (e.target.className === "btn equal-btn"){
+
+      } else if (e.target.innerHTML === "=") {
         equation(storedOp, storedNb, activeNb);
-        activeNb = result;
-        storedNb = result;
+        activeNb = storedNb = result;
         displayNb.innerHTML = activeNb;
         displayHist.innerHTML = "";
         storedOp = "";
         stringNb = activeNb;
+
       } else if (e.target.innerHTML === "C") {
         init();
       } else if (e.target.innerHTML === "CE") {
@@ -76,21 +83,21 @@
     });
   });
 
-  function equation(op, stNb, acNb) {
+  function equation(op, a, b) {
     switch(op) {
       case "+":
-        result = stNb + acNb;     
+        result = a + b;     
         break;
       case "-":
-        result = stNb - acNb;      
+        result = a - b;      
         break;
-      case "x":
-        result = stNb * acNb;      
+      case "*":
+        result = a * b;      
         break;
       case "÷":
-        result = stNb / acNb;
+        result = a / b;
         break;
     }
   };
-})();
+// })();
 
