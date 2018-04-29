@@ -19,6 +19,7 @@
 
   Array.from(buttons).forEach(el => {
     el.addEventListener('click', e => {
+      // Clicking on a number
       if (e.target.className === "btn number-btn") {
         if (stringNb === 0) {
           stringNb = "";
@@ -28,6 +29,7 @@
           displayNb.innerHTML = stringNb;
           activeNb = parseFloat(stringNb);
         };
+      // Clicking on an operator
       } else if (e.target.className === "btn operator-btn") {
         if (storedOp !== "") {
           equation(storedOp, storedNb, activeNb);
@@ -39,8 +41,13 @@
         storedNb = activeNb;
         storedOp = e.target.innerHTML;
         displayNb.innerHTML = storedNb;
-        displayHist.innerHTML = `${storedOp} ${stringNb} ` + displayHist.innerHTML;
+        if (displayHist.innerHTML.length < 27) {
+          displayHist.innerHTML += `${stringNb} ${storedOp} `;
+        } else {
+          displayHist.innerHTML = `${activeNb} ${storedOp}` ;
+        };
         stringNb = "";
+      // Clicking on the equal button
       } else if (e.target.innerHTML === "=") {
         equation(storedOp, storedNb, activeNb);
         activeNb = storedNb = result;
@@ -48,12 +55,15 @@
         displayHist.innerHTML = "";
         storedOp = "";
         stringNb = activeNb;
+      // Clicking on the "C" button
       } else if (e.target.innerHTML === "C") {
         init();
+      // Clicking on the "CE" button
       } else if (e.target.innerHTML === "CE") {
         activeNb = 0;
         displayNb.innerHTML = activeNb;
         stringNb = "";
+      // Clicking on the "+/-" button
       } else if (e.target.innerHTML === "+/-") {
         if (activeNb !== 0) {
           if (Math.sign(activeNb) === 1) {
@@ -66,12 +76,14 @@
             stringNb = activeNb;
           };
         };
+      // Clicking on the "." button
       } else if (e.target.innerHTML === ".") {
         stringNb = displayNb.innerHTML;
         if (stringNb.includes(".") === false) {
           stringNb = stringNb + '.';
           displayNb.innerHTML = stringNb;
         };
+      // Clicking on the "%" button
       } else if (e.target.innerHTML === "%") {
         activeNb = (storedNb * activeNb) / 100;
         displayNb.innerHTML = activeNb;
@@ -88,7 +100,7 @@
       case "-":
         result = a - b;      
         break;
-      case "*":
+      case "x":
         result = a * b;      
         break;
       case "÷":
