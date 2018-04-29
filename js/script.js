@@ -1,4 +1,4 @@
-// (() => {
+(() => {
   const buttons = document.querySelectorAll('.btn');
   const displayHist = document.querySelector('.history');
   const displayNb = document.querySelector('.result');
@@ -28,7 +28,6 @@
           displayNb.innerHTML = stringNb;
           activeNb = parseFloat(stringNb);
         };
-
       } else if (e.target.className === "btn operator-btn") {
         if (storedOp !== "") {
           equation(storedOp, storedNb, activeNb);
@@ -42,7 +41,6 @@
         displayNb.innerHTML = storedNb;
         displayHist.innerHTML = `${storedOp} ${stringNb} ` + displayHist.innerHTML;
         stringNb = "";
-
       } else if (e.target.innerHTML === "=") {
         equation(storedOp, storedNb, activeNb);
         activeNb = storedNb = result;
@@ -50,7 +48,6 @@
         displayHist.innerHTML = "";
         storedOp = "";
         stringNb = activeNb;
-
       } else if (e.target.innerHTML === "C") {
         init();
       } else if (e.target.innerHTML === "CE") {
@@ -99,5 +96,5 @@
         break;
     }
   };
-// })();
+})();
 
