@@ -14,7 +14,7 @@ button:focus {
 
 .calculator {
   background: #222;
-  padding: 1em;
+  padding: 1.2em;
   border-radius: 13px; }
 
 .screen {
@@ -34,7 +34,7 @@ button:focus {
 .numpad {
   height: auto;
   width: auto;
-  padding: 1em;
+  padding: 1.3em;
   border: solid 2px lightgray;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

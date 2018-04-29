@@ -21,9 +21,11 @@
   Array.from(buttons).forEach(el => {
     el.addEventListener('click', e => {
       if (e.target.className === "btn number-btn") {
-        stringNb += e.target.innerHTML;
-        displayNb.innerHTML = stringNb;
-        activeNb = parseFloat(stringNb);
+        if (stringNb.length < 20) {
+          stringNb += e.target.innerHTML;
+          displayNb.innerHTML = stringNb;
+          activeNb = parseFloat(stringNb);
+        };
       } else if (e.target.className === "btn operator-btn") {
         if (storedOp !== "") {
           equation(storedOp, storedNb, activeNb);
